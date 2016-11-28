@@ -1,0 +1,50 @@
+header{
+  min-width: 320px;
+  padding: 20px 0;
+
+  .title {
+    font-size: 5em;
+    text-align: center;
+  }
+
+  .first-line {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap:  wrap;
+  }
+
+  .wrap {
+    background-color: $mainBg;
+    padding: 10px 20px;
+    text-align: center;
+    color: #eee4da;
+    border-radius: 5px;
+    margin: 0 10px 5px;
+  }
+
+  .score {
+    color: #fff;
+  }
+
+  .sec-line {
+    display: flex;
+    align-items: center;
+    padding-top: 10px;
+    justify-content: center;
+    flex-wrap:  wrap;
+  }
+  .button{
+    background-color: #8f7a66;
+    padding: 10px 15px;
+    color: #f9f6f2;
+    border-radius: 5px;
+    margin: 0 10px;
+    cursor: pointer;
+
+    &.disabled {
+      opacity: .6;
+      cursor: default;
+    }
+  }
+}

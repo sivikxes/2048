@@ -1,0 +1,213 @@
+section{
+  min-width: 320px;
+}
+.app-wrap {
+  margin: 0 auto 20px;
+  width: 480px;
+}
+
+
+.app {
+  width: 100%;
+  height: 0;
+  padding-top: 100%;
+  background-color: $mainBg;
+  border-radius: 6px;
+  position: relative;
+  &:after {
+    content: '';
+    background-color: $mainBg;
+    position: absolute;
+    left: -1.5%;
+    top: -1.5%;
+    width: 103%;
+    height: 103%;
+    z-index: -1;
+    border-radius: 6px;
+  }
+
+  &[data-size="5"]{
+    .cell{
+      font-size: 50px;
+      @include positionPer(5);
+    }
+    &:after {
+      left: -1%;
+      top: -1%;
+      width: 102%;
+      height: 102%;
+    }
+  }
+  &[data-size="6"]{
+    .cell{
+      font-size: 45px;
+      @include positionPer(6);
+    }
+    &:after {
+      left: -1%;
+      top: -1%;
+      width: 102%;
+      height: 102%;
+    }
+  }
+  &[data-size="7"]{
+    .cell{
+      font-size: 40px;
+      @include positionPer(7);
+    }
+    &:after {
+      left: -1%;
+      top: -1%;
+      width: 102%;
+      height: 102%;
+    }
+  }
+  &[data-size="8"]{
+    .cell{
+      font-size: 35px;
+      @include positionPer(8);
+    }
+    &:after {
+      left: -1%;
+      top: -1%;
+      width: 102%;
+      height: 102%;
+    }
+  }
+}
+
+.face-cells {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.cell {
+  position: absolute;
+  top: 0;
+  left: 0;
+  font-size: 50px;
+
+  @include positionPer(4);
+
+  &:before {
+    content: '';
+    width: 90%;
+    height: 90%;
+    position: absolute;
+    top: 5%;
+    left: 5%;
+    border-radius: 4px;
+    background-color: #CCC0B3;
+  }
+  &:after {
+    content: attr(data-num);
+    width: 90%;
+    height: 90%;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 5%;
+    left: 5%;
+    border-radius: 4px;
+    overflow: hidden;
+  }
+  &[data-num]{
+    z-index: 2;
+    &:after{
+      background-color: #752864;
+      color: #f9f6f2;
+      font-size: 40%;
+    }
+  }
+  &[data-num='2']{
+    &:after{
+      background-color: #eee4da;
+      color: $textColor;
+      font-size: 100%;
+    }
+  }
+  &[data-num='4']{
+    &:after{
+      background-color: #ede0c8;
+      color: $textColor;
+      font-size: 100%;
+    }
+  }
+  &[data-num='8']{
+    &:after{
+      background-color: #f2b179;
+      font-size: 100%;
+    }
+  }
+  &[data-num='16']{
+    &:after{
+      background-color: #f59563;
+      font-size: 100%;
+    }
+  }
+  &[data-num='32']{
+    &:after{
+      background-color: #f67c5f;
+      font-size: 100%;
+    }
+  }
+  &[data-num='64']{
+    &:after{
+      background: #f65e3b;
+      font-size: 100%;
+    }
+  }
+  &[data-num='128']{
+    &:after{
+      background: #edcf72;
+      font-size: 80%;
+    }
+  }
+  &[data-num='256']{
+    &:after{
+      background: #edcc61;
+      font-size: 80%;
+    }
+  }
+  &[data-num='512']{
+    &:after{
+      background: #edc850;
+      font-size: 80%;
+    }
+  }
+  &[data-num='1024']{
+    &:after{
+      background: #edc53f;
+      font-size: 60%;
+    }
+  }
+  &[data-num='2048']{
+    &:after{
+      background: #edc22e;
+      font-size: 60%;
+    }
+  }
+  &[data-num='4096']{
+    &:after{
+      background: #FF3D3D;
+      font-size: 60%;
+    }
+  }
+  &[data-num='8192']{
+    &:after{
+      background: #FF3D3D;
+      font-size: 60%;
+    }
+  }
+  &[data-num='16384']{
+    &:after{
+      background: #FF3D3D;
+    }
+  }
+
+}

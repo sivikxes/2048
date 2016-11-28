@@ -1,0 +1,14 @@
+@mixin positionPer($num){
+  $percentage: percentage(1/$num);
+  width: $percentage;
+  height: $percentage;
+  @while ($num > 0) {
+    &[data-x="#{$num}"]{
+      left: $percentage*$num;
+    }
+    &[data-y="#{$num}"]{
+      top: $percentage*$num;
+    }
+    $num: $num - 1;
+  }
+}
