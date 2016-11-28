@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width">
+    <title>2048</title>
+    <link rel="stylesheet" href="public/css/main.css">
+</head>
+<body>
+<header>
+    <div class="first-line">
+        <div class="title">2048</div>
+        <div class="wrap">
+            <div class="hint">Score</div>
+            <div class="score js-cur-score">0</div>
+        </div>
+        <div class="wrap">
+            <div class="hint">Best</div>
+            <div class="score js-best-score">0</div>
+        </div>
+    </div>
+    <div class="sec-line">
+        <div class="button">NewGame</div>
+        <div class="button disabled">Undo</div>
+        <div class="button disabled">Hint</div>
+    </div>
+</header>
+<section>
+    <div class="app-wrap">
+        <div class="app" data-size="4">
+            <div class="face-cells">
+                <div class="cell" data-x="0" data-y="0" ></div>
+                <div class="cell" data-x="0" data-y="1" ></div>
+                <div class="cell" data-x="0" data-y="2" ></div>
+                <div class="cell" data-x="0" data-y="3" ></div>
+                <div class="cell" data-x="0" data-y="4" ></div>
+                <div class="cell" data-x="0" data-y="5" ></div>
+                <div class="cell" data-x="0" data-y="6" ></div>
+                <div class="cell" data-x="0" data-y="7" ></div>
+
+                <div class="cell" data-x="1" data-y="0" ></div>
+                <div class="cell" data-x="1" data-y="1" ></div>
+                <div class="cell" data-x="1" data-y="2" ></div>
+                <div class="cell" data-x="1" data-y="3" ></div>
+                <div class="cell" data-x="1" data-y="4" ></div>
+                <div class="cell" data-x="1" data-y="5" ></div>
+                <div class="cell" data-x="1" data-y="6" ></div>
+                <div class="cell" data-x="1" data-y="7" ></div>
+
+                <div class="cell" data-x="2" data-y="0"></div>
+                <div class="cell" data-x="2" data-y="1"></div>
+                <div class="cell" data-x="2" data-y="2"></div>
+                <div class="cell" data-x="2" data-y="3"></div>
+                <div class="cell" data-x="2" data-y="4"></div>
+                <div class="cell" data-x="2" data-y="5"></div>
+                <div class="cell" data-x="2" data-y="6"></div>
+                <div class="cell" data-x="2" data-y="7"></div>
+
+                <div class="cell" data-x="3" data-y="0"></div>
+                <div class="cell" data-x="3" data-y="1"></div>
+                <div class="cell" data-x="3" data-y="2"></div>
+                <div class="cell" data-x="3" data-y="3"></div>
+                <div class="cell" data-x="3" data-y="4"></div>
+                <div class="cell" data-x="3" data-y="5"></div>
+                <div class="cell" data-x="3" data-y="6"></div>
+                <div class="cell" data-x="3" data-y="7"></div>
+
+                <div class="cell" data-x="4" data-y="0"></div>
+                <div class="cell" data-x="4" data-y="1"></div>
+                <div class="cell" data-x="4" data-y="2"></div>
+                <div class="cell" data-x="4" data-y="3"></div>
+                <div class="cell" data-x="4" data-y="4"></div>
+                <div class="cell" data-x="4" data-y="5"></div>
+                <div class="cell" data-x="4" data-y="6"></div>
+                <div class="cell" data-x="4" data-y="7"></div>
+
+                <div class="cell" data-x="5" data-y="0"></div>
+                <div class="cell" data-x="5" data-y="1"></div>
+                <div class="cell" data-x="5" data-y="2"></div>
+                <div class="cell" data-x="5" data-y="3"></div>
+                <div class="cell" data-x="5" data-y="4"></div>
+                <div class="cell" data-x="5" data-y="5"></div>
+                <div class="cell" data-x="5" data-y="6"></div>
+                <div class="cell" data-x="5" data-y="7"></div>
+
+                <div class="cell" data-x="6" data-y="0"></div>
+                <div class="cell" data-x="6" data-y="1"></div>
+                <div class="cell" data-x="6" data-y="2"></div>
+                <div class="cell" data-x="6" data-y="3"></div>
+                <div class="cell" data-x="6" data-y="4"></div>
+                <div class="cell" data-x="6" data-y="5"></div>
+                <div class="cell" data-x="6" data-y="6"></div>
+                <div class="cell" data-x="6" data-y="7"></div>
+
+                <div class="cell" data-x="7" data-y="0"></div>
+                <div class="cell" data-x="7" data-y="1"></div>
+                <div class="cell" data-x="7" data-y="2"></div>
+                <div class="cell" data-x="7" data-y="3"></div>
+                <div class="cell" data-x="7" data-y="4"></div>
+                <div class="cell" data-x="7" data-y="5"></div>
+                <div class="cell" data-x="7" data-y="6"></div>
+                <div class="cell" data-x="7" data-y="7"></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script type="text/javascript" src="public/js/libs.min.js"></script>
+<script type="text/javascript" src="public/js/main.min.js"></script>
+</body>
+</html>
