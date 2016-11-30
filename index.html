@@ -13,16 +13,25 @@
         <div class="wrap">
             <div class="hint">Score</div>
             <div class="score js-cur-score">0</div>
+            <div class="last-score js-last-cur-score">0</div>
         </div>
         <div class="wrap">
             <div class="hint">Best</div>
             <div class="score js-best-score">0</div>
+            <div class="last-score js-last-best-score">0</div>
         </div>
     </div>
     <div class="sec-line">
-        <div class="button">NewGame</div>
-        <div class="button disabled">Undo</div>
+        <div class="button js-new-game">NewGame</div>
+        <div class="button js-undo disabled">Undo</div>
         <div class="button disabled">Hint</div>
+    </div>
+    <div class="new-game-line">
+        <div class="ng-item activate" data-size="4">4x4</div>
+        <div class="ng-item" data-size="5">5x5</div>
+        <div class="ng-item" data-size="6">6x6</div>
+        <div class="ng-item" data-size="7">7x7</div>
+        <div class="ng-item" data-size="8">8x8</div>
     </div>
 </header>
 <section>
@@ -101,10 +110,19 @@
                 <div class="cell" data-x="7" data-y="6"></div>
                 <div class="cell" data-x="7" data-y="7"></div>
             </div>
+            <div class="real-cels"></div>
         </div>
     </div>
 </section>
-
+<script id="undo" type="text/x-handlebars-template">
+    {{#each this}}
+        {{#each this}}
+            {{#if this}}
+                <div class="cell" data-x="{{@../index}}" data-y="{{@index}}" data-num="{{this}}"></div>
+            {{/if}}
+        {{/each}}
+    {{/each}}
+</script>
 <script type="text/javascript" src="public/js/libs.min.js"></script>
 <script type="text/javascript" src="public/js/main.min.js"></script>
 </body>
