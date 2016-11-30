@@ -76,7 +76,7 @@ section{
   }
 }
 
-.face-cells {
+.face-cells, .real-cels {
   width: 100%;
   height: 100%;
   overflow: hidden;
@@ -84,7 +84,13 @@ section{
   top: 0;
   left: 0;
 }
-
+.real-cels .cell{
+  animation: show 100ms ease;
+  transition: all 100ms;
+  &.compare{
+    transform: scale(1.1);
+  }
+}
 .cell {
   position: absolute;
   top: 0;
