@@ -7,6 +7,32 @@ header{
     text-align: center;
   }
 
+  .new-game-line{
+    height: 0;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    flex-wrap:  wrap;
+    overflow: hidden;
+    transition: height 200ms;
+
+    &.opened {
+      height: 40px;
+    }
+
+    .ng-item {
+      margin: 0 5px;
+      padding: 5px;
+      background-color: $mainBg;
+      color: #f9f6f2;
+      cursor: pointer;
+      border-radius: 4px;
+      &.activate {
+        background-color: #8f7a66;
+      }
+    }
+  }
+
   .first-line {
     display: flex;
     align-items: center;
@@ -21,12 +47,29 @@ header{
     color: #eee4da;
     border-radius: 5px;
     margin: 0 10px 5px;
+    position: relative;
   }
 
   .score {
     color: #fff;
   }
 
+  .last-score {
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    opacity: 0;
+    color: darken($textColor,10%);
+    padding: 5px 10px;
+    transform: translateX(-50%);
+    border-radius: 5px;
+
+    &.moved{
+      top: -20px;
+      opacity: .8;
+      transition: all 200ms;
+    }
+  }
   .sec-line {
     display: flex;
     align-items: center;
