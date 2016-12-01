@@ -52,6 +52,19 @@ var GameApp = (function() {
             }
             return freeCels;
         },
+        gameOver: function () {
+            var canMove = 0;
+            for(var i = 0; i < SIZE && canMove == 0; i++){
+                for(var j = 0; j < SIZE && canMove == 0; j++){
+                    if(j+1 < SIZE && cells[i][j] == cells[i][j+1])canMove++;
+                    if(i+1< SIZE && cells[i][j] == cells[i+1][j])canMove++;
+                }
+            }
+            if(canMove == 0){
+                $app.addClass('gameover');
+                localStorage.removeItem('game');
+            }
+        },
         newRandCell: function () {
             var freeCels = fn.getFreeCells();
             var needCell = freeCels[fn.getRandomInt(0,freeCels.length-1)];
@@ -63,6 +76,9 @@ var GameApp = (function() {
             var toPush = {score: score,cells:cells};
             cellsHistory.push(jQuery.extend(true,{}, toPush));
             fn.localStorGame(toPush);
+            if(freeCels.length == 1){
+                fn.gameOver();
+            }
             if(cellsHistory.length > 2){
                 $undoBtn.removeClass('disabled');
             }
@@ -110,8 +126,9 @@ var GameApp = (function() {
         },
         move:function (type) {
             switch (type) {
-                case 'top':
+                case 'up':
                     for(var i = 0; i < SIZE; i++){
+                        var pos;
                         for(var j = 0; j < SIZE; j++){
                             if(cells[i][j]){
                                 var row = j;
@@ -121,8 +138,9 @@ var GameApp = (function() {
                                         cells[i][row]=0;
                                         fn.chPos({x:i,y:row},{x:i,y:row-1});
                                         row--;
-                                    } else if (cells[i][row-1] == cells[i][row]){
+                                    } else if (cells[i][row-1] == cells[i][row] && pos != ''+i+(row-1)){
                                         cells[i][row-1] *= 2;
+                                        pos = ''+i+(row-1);
                                         fn.compare({x:i,y:row},{x:i,y:row-1,num:cells[i][row-1]});
                                         cells[i][row] = 0;
                                     } else {
@@ -135,6 +153,7 @@ var GameApp = (function() {
                     break;
                 case 'down':
                     for(var i = 0; i < SIZE; i++){
+                        var pos;
                         for(var j = (SIZE-1); j >=0; j--){
                             if(cells[i][j]){
                                 var row = j;
@@ -144,8 +163,9 @@ var GameApp = (function() {
                                         cells[i][row]=0;
                                         fn.chPos({x:i,y:row},{x:i,y:row+1});
                                         row++;
-                                    } else if (cells[i][row+1] == cells[i][row]){
+                                    } else if (cells[i][row+1] == cells[i][row] && pos != ''+i+(row+1)){
                                         cells[i][row+1] *= 2;
+                                        pos = ''+i+(row+1);
                                         fn.compare({x:i,y:row},{x:i,y:row+1,num:cells[i][row+1]});
                                         cells[i][row] = 0;
                                     } else {
@@ -158,6 +178,7 @@ var GameApp = (function() {
                     break;
                 case 'left':
                     for(var i = 0; i < SIZE; i++){
+                        var pos;
                         for(var j = 0; j < SIZE; j++){
                             if(cells[i][j]){
                                 var row = i;
@@ -167,8 +188,9 @@ var GameApp = (function() {
                                         cells[row][j]=0;
                                         fn.chPos({x:row,y:j},{x:row-1,y:j});
                                         row--;
-                                    } else if (cells[row-1][j] == cells[row][j]){
+                                    } else if (cells[row-1][j] == cells[row][j] && pos != ''+(row-1)+j){
                                         cells[row-1][j] *= 2;
+                                        pos = ''+(row-1)+j;
                                         fn.compare({x:row,y:j},{x:row-1,y:j,num:cells[row-1][j]});
                                         cells[row][j] = 0;
                                     } else {
@@ -181,6 +203,7 @@ var GameApp = (function() {
                     break;
                 case 'right':
                     for(var i = (SIZE-1); i >=0; i--){
+                        var pos;
                         for(var j = 0; j < SIZE; j++){
                             if(cells[i][j]){
                                 var row = i;
@@ -190,8 +213,9 @@ var GameApp = (function() {
                                         cells[row][j]=0;
                                         fn.chPos({x:row,y:j},{x:row+1,y:j});
                                         row++;
-                                    } else if (cells[row+1][j] == cells[row][j]){
+                                    } else if (cells[row+1][j] == cells[row][j] && pos != ''+(row-1)+j){
                                         cells[row+1][j] *= 2;
+                                        pos = ''+(row-1)+j;
                                         fn.compare({x:row,y:j},{x:row+1,y:j,num:cells[row+1][j]});
                                         cells[row][j] = 0;
                                     } else {
@@ -239,6 +263,7 @@ var GameApp = (function() {
         },
         undo: function () {
             if(!$undoBtn.hasClass('disabled')){
+                $app.removeClass('gameover');
                 cellsHistory.splice(cellsHistory.length-1, 1);
                 cells = jQuery.extend(true,{}, cellsHistory[cellsHistory.length - 1].cells);
                 score = cellsHistory[cellsHistory.length - 1].score;
@@ -278,7 +303,7 @@ var GameApp = (function() {
                         break;
                     case 38:
                     case 87:
-                        fn.move('top');
+                        fn.move('up');
                         break;
                     case 39:
                     case 68:
@@ -291,6 +316,11 @@ var GameApp = (function() {
                     case 8:
                         break;
                 }
+            });
+            $app.swipe( {
+                swipe:function(event, direction, distance, duration, fingerCount, fingerData) {
+                    fn.move(direction);
+                } 
             });
         },
         undo:function () {
