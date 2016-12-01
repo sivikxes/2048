@@ -32,5 +32,46 @@
       }
     }
   }
-
+}
+@media screen and (max-height: 500px) and (orientation: landscape) {
+  header, section {
+    width: 100vh;
+    margin: 0 auto;
+  }
+  .app-wrap{
+    width: 90%;
+  }
+  header {
+    .title {
+      width: 100%;
+    }
+  }
+  .app-wrap{
+    width: 90%;
+  }
+  .app{
+    .cell {
+      font-size: 35px;
+    }
+    &[data-size="5"]{
+      .cell {
+        font-size: 35px;
+      }
+    }
+    &[data-size="6"]{
+      .cell {
+        font-size: 30px;
+      }
+    }
+    &[data-size="7"]{
+      .cell {
+        font-size: 25px;
+      }
+    }
+    &[data-size="8"]{
+      .cell {
+        font-size: 22px;
+      }
+    }
+  }
 }
