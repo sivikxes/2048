@@ -9,6 +9,7 @@ var GameApp = (function() {
     var $newGameBtn = $('.js-new-game');
     var $newGameLine = $('.new-game-line');
     var $handleHtml = $('#undo').html();
+    var $hintBtn = $('.js-hint');
     var $handleTemplate;
     var SIZE = 4;
     var score = 0;
@@ -243,6 +244,7 @@ var GameApp = (function() {
             $lastcurScore.removeClass('moved');
             $lastbestScore.removeClass('moved');
             $curScore.html(0);
+            $app.removeClass('gameover');
             $lastcurScore.removeClass('moved');
             $lastbestScore.removeClass('moved');
             cellsHistory=[];
@@ -274,6 +276,26 @@ var GameApp = (function() {
                     $undoBtn.addClass('disabled');
                 }
             }
+        },
+        /**
+         * directions - 0-top,1-right,2-down,3-left;
+         */
+        hint: function () {
+            var directions = {
+                0:0,
+                1:0
+            };
+            for(var i = 0; i < SIZE; i++){
+                for(var j = 0; j < SIZE; j++){
+                    if(cells[i][j] != 0 && j+1 < SIZE && i+1 < SIZE){
+                        var nextX = (cells[i][j+1] != 0);
+                        var nextY;
+                        if(cells[i][j])directions[0]+=cells[i][j]*2;
+                        if(cells[i][j] == cells[i+1][j])directions[1]+=cells[i][j]*2;
+                    }
+                }
+            }
+            console.log(directions);
         }
     };
 
@@ -341,6 +363,11 @@ var GameApp = (function() {
                 $this.addClass('activate');
                 $app.attr('data-size',$this.attr('data-size'));
                 fn.renderNewGrid();
+            });
+        },
+        hint: function () {
+            $hintBtn.on('click', function () {
+                fn.hint();
             });
         }
     };
